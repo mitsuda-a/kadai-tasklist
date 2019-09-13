@@ -28,5 +28,13 @@
     
     {!! link_to_route('tasks.create', '新規タスク', [], ['class' => 'btn btn-
     primary bg-info']) !!}
+    
+    
+    <div class="center jumbotron">
+        <div class="text-center">
+            <h1>Task List へ ようこそ　!</h1>
+            {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-primary btn-lg']) !!}
+        </div>
+    </div>
 
 @endsection
