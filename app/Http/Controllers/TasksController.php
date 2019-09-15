@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Task;
 
+use App\User;
+
 class TasksController extends Controller
 {
     /**
@@ -14,11 +16,15 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $tasks = Task::all();
+    {  
+        $user = \Auth::user();
+        $tasks = Task::where('user_id',\Auth::id() )->get();
         
+       
         return view('tasks.index', [
             'tasks' => $tasks,
+            'user' => $user,
+        
         ]);
     }
 
@@ -53,6 +59,7 @@ class TasksController extends Controller
         $task = new Task;
         $task->content = $request->content;
         $task->status = $request->status;
+        $task->user_id = \Auth::user()->id;
         $task->save();
         
         return redirect('/');
@@ -106,6 +113,7 @@ class TasksController extends Controller
         $task = Task::find($id);
         $task->content = $request->content;
         $task->status = $request->status;
+        $task->user_id = \Auth::user()->id;
         $task->save();
         
         return redirect('/');

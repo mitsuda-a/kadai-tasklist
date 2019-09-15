@@ -19,6 +19,8 @@
                     {!! Form::label('password', 'パスワード') !!}
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
+                
+                {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
             
             <p class="mt-2">新規登録は　{!! link_to_route('signup.get', 'こちら') !!}</p>
